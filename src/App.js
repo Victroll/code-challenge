@@ -3,6 +3,9 @@ import request from './tools/request';
 import { ARTICLES_QUERY } from './tools/queries';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Body from './containers/Body';
+import { connect } from 'react-redux';
+import { setArticles } from './reducer/actions';
 
 class App extends Component {
   // definition
@@ -16,7 +19,7 @@ class App extends Component {
   // lifecycle
   componentWillMount() {
     request(ARTICLES_QUERY).then(response => {
-      this.setState({ articles: response.data.articles });
+      this.props.setArticles(response.data.articles);
     });
   }
 
@@ -25,12 +28,20 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <h2>Billin code challenge</h2>
-        <pre>{JSON.stringify(this.state.articles, null, 2)}</pre>
+        <Body />
         <Footer />
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    setArticles: articles => dispatch(setArticles(articles)),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(App);

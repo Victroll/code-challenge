@@ -28,6 +28,7 @@
     "eol-last": "off",
     "jsx-quotes": "off",
     "quotes": "off",
+    "arrow-body-style": "off",
     "space-before-function-paren": [
       2,
       "never"
