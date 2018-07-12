@@ -22,6 +22,7 @@ app.use('/graphql', GraphHTTP({
   graphiql: true,
   pretty: true,
 }));
+app.use('/assets', Express.static(`${__dirname}/public`));
 
 app.listen(APP_PORT, () => {
   console.log(`App listening on port ${APP_PORT}`); // eslint-disable-line no-console

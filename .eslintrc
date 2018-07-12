@@ -24,6 +24,10 @@
     "react/require-default-props": 0,
     "react/no-find-dom-node": 0,
     "react/jsx-filename-extension": 0,
+    "react/prefer-stateless-function": 0,
+    "eol-last": "off",
+    "jsx-quotes": "off",
+    "quotes": "off",
     "space-before-function-paren": [
       2,
       "never"
