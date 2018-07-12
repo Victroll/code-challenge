@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from './tools/request';
 import { ARTICLES_QUERY } from './tools/queries';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 class App extends Component {
   // definition
@@ -26,6 +27,7 @@ class App extends Component {
         <Header />
         <h2>Billin code challenge</h2>
         <pre>{JSON.stringify(this.state.articles, null, 2)}</pre>
+        <Footer />
       </div>
     );
   }
