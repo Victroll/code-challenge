@@ -23,7 +23,7 @@ class Card extends React.Component {
           <section className={`card enlarged`}>
             <h1>{this.props.article.title}</h1>
             <h2>{this.props.article.author}</h2>
-            <p>{this.props.article.excerpt}</p>
+            <p>{this.props.article.content}</p>
           </section>
         </section>
         :
