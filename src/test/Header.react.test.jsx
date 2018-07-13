@@ -30,7 +30,7 @@ describe('Header', () => {
   });
 
   // Classes, attributes and ids
-  it('always renders a section with the class \'header\'', () => {
+  it(`always renders a section with the class 'header'`, () => {
     const section = header().find('section');
     expect(section.hasClass('header')).toBeTruthy();
   });

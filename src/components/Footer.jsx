@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/footer.css';
 
 class Footer extends React.Component {
+  // The idea is using more sections like 'about' inside section 'footer'
   render() {
     return (
       <section className='footer'>
