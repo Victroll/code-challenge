@@ -9,18 +9,36 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/src/test/mocks/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/src/test/mocks/styleMock.js"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/cypress/"
+    ]
+  },
   "devDependencies": {
+    "babel-jest": "^22.4.4",
     "babel-eslint": "^7.2.3",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "cypress": "^3.0.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-15": "^1.0.0",
+    "jest": "^22.4.4",
+    "react-test-renderer": "^16.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+    "test": "jest",
+    "cypress:open": "cypress open"
   }
 }

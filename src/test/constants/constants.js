@@ -1,0 +1,1 @@
+export const ASSETS_DIR = 'http://localhost:3210/assets/';
