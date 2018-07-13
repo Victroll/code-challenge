@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import request from './tools/request';
 import { ARTICLES_QUERY } from './tools/queries';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Body from './containers/Body';
-import { connect } from 'react-redux';
 import { setArticles } from './reducer/actions';
 
 class App extends Component {

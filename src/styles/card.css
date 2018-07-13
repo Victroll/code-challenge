@@ -1,0 +1,40 @@
+.card {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: rgba(0, 0, 0, 0.5);
+    margin: 2rem 1rem;
+    padding: 1rem;
+}
+
+@media only screen and (max-width: 414px) {
+    .card {
+        min-width: 20vw;
+    }
+}
+
+@media only screen and (min-width: 415px) {
+    .card {
+        max-width: 20vw;
+    }
+}
+
+.card h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.card p {
+    text-align: justify;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
