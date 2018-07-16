@@ -6,3 +6,16 @@ export function setArticles(articles) {
     articles,
   };
 }
+
+export function fetchArticle(id) {
+  return {
+    type: TYPES.FETCH_ARTICLE,
+    id,
+  };
+}
+
+export function hideArticle() {
+  return {
+    type: TYPES.HIDE_ARTICLE,
+  };
+}

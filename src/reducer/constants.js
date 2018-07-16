@@ -1,1 +1,5 @@
 export const SET_ARTICLES = 'SET_ARTICLES';
+export const FETCH_ARTICLE = 'FETCH_ARTICLE';
+export const FETCH_ARTICLE_OK = 'FETCH_ARTICLE_OK';
+export const FETCH_ARTICLE_KO = 'FETCH_ARTICLE_KO';
+export const HIDE_ARTICLE = 'HIDE_ARTICLE';

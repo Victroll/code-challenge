@@ -6,3 +6,13 @@ export const ARTICLES_QUERY = `{
     title
   }
 }`;
+
+export const ARTICLE_QUERY = id => {
+  return `{
+    article(id: "${id}") {
+      author
+      title
+      content
+    }
+  }`;
+};

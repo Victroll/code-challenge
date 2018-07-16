@@ -7,6 +7,18 @@ export default function(state, action) {
         ...state,
         articles: action.articles,
       };
+    case TYPES.FETCH_ARTICLE_OK:
+      return {
+        ...state,
+        enlargedArticle: action.article,
+        showArticle: true,
+      };
+    case TYPES.HIDE_ARTICLE:
+      return {
+        ...state,
+        enlargedArticle: null,
+        showArticle: false,
+      };
     default:
       return state;
   }
