@@ -7,6 +7,20 @@ export default function(state, action) {
         ...state,
         articles: action.articles,
       };
+    case TYPES.WRITE_NEW_ARTICLE:
+      return {
+        ...state,
+        showArticle: true,
+        editMode: true,
+        enlargedArticle: {
+          id: '', // Indicates a new article
+          author: 'Tu nombre',
+          title: 'Título',
+          content: 'Contenido',
+          published: false,
+          tags: ['Tus Tags'],
+        }
+      };
     case TYPES.FETCH_ARTICLE_OK:
       return {
         ...state,
@@ -19,6 +33,7 @@ export default function(state, action) {
         enlargedArticle: action.article,
         editMode: false,
       };
+    case TYPES.SAVE_NEW_ARTICLE_OK:
     case TYPES.DELETE_ARTICLE_OK:
     case TYPES.HIDE_ARTICLE:
       return {

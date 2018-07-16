@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hideArticle, deleteArticle, changeMode, updateArticle } from '../reducer/actions';
+import { hideArticle, deleteArticle, changeMode, updateArticle, saveNewArticle } from '../reducer/actions';
 import '../styles/enlarged-card.css';
 
 class EnlargedCard extends React.Component {
@@ -35,8 +35,11 @@ class EnlargedCard extends React.Component {
       title: this.state.title,
       tags: this.state.tags.trim().split(";"),
     };
-    
-    this.props.updateArticle(article);
+
+    if (this.props.article.id === '')
+      this.props.saveNewArticle(article);
+    else
+      this.props.updateArticle(article);
   }
 
   renderEditMode(article) {
@@ -138,7 +141,8 @@ const mapDispatchToProps = dispatch => {
     hide: () => dispatch(hideArticle()),
     deleteArticle: id => dispatch(deleteArticle(id)),
     changeMode: () => dispatch(changeMode()),
-    updateArticle: (id, article) => dispatch(updateArticle(id, article)),
+    updateArticle: (article) => dispatch(updateArticle(article)),
+    saveNewArticle: (article) => dispatch(saveNewArticle(article)),
   };
 };
 

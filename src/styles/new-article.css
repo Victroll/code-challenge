@@ -1,0 +1,44 @@
+@media only screen and (min-width: 415px) {
+    .new-article {
+        position: absolute;
+        top: calc(100% - 15rem);
+        left: calc(100% - 8rem);
+    }
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.new-article button {
+    background-color: #03a9f4;
+    color: white;
+    border-radius: 100%;
+    border: none;
+    font-size: 2rem;
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.new-article button.animate {
+    animation: scale 2s linear infinite;
+}
+
+.new-article button:focus {
+    outline: none;
+}

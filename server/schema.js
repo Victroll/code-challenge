@@ -99,6 +99,23 @@ const Mutation = new GraphQLObjectType({
         return db.Article.findById(input.id).remove().exec();
       },
     },
+    createArticle: {
+      type: articleType,
+      description: 'Create a new Article',
+      args: {
+        article: { type: ArticleInputType },
+      },
+      resolve(_, { article }) {
+        return db.Article.create({
+          author: article.author,
+          content: article.content,
+          excerpt: article.content.slice(0, 350),
+          tags: article.tags,
+          title: article.title,
+          published: false
+        });
+      }
+    },
     updateArticle: {
       type: articleType,
       description: 'Update an article',
@@ -111,6 +128,7 @@ const Mutation = new GraphQLObjectType({
           { $set: {
             author: article.author,
             content: article.content,
+            excerpt: article.content.slice(0, 350),
             title: article.title,
             tags: article.tags,
             },

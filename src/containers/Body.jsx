@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Card from '../containers/Card';
+import Card from './Card';
 import EnlargedCard from '../components/EnlargedCard';
+import NewArticle from '../components/NewArticle';
 import '../styles/body.css';
 
 class Body extends React.Component {
@@ -13,6 +14,7 @@ class Body extends React.Component {
             (_, i) => <Card key={`card-${i}`} id={i} />,
         )}
         {showArticle && <EnlargedCard article={enlargedArticle} />}
+        <NewArticle />
       </section>
     );
   }

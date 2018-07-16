@@ -39,3 +39,16 @@ export function updateArticle(article) {
     article,
   };
 }
+
+export function writeNewArticle() {
+  return {
+    type: TYPES.WRITE_NEW_ARTICLE,
+  };
+}
+
+export function saveNewArticle(article) {
+  return {
+    type: TYPES.SAVE_NEW_ARTICLE,
+    article,
+  };
+}
