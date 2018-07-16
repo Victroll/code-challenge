@@ -4,6 +4,7 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLSchema,
+  GraphQLInputField,
 } from 'graphql';
 import db from './db';
 
@@ -38,24 +39,21 @@ const articleType = new GraphQLObjectType({
 const Query = new GraphQLObjectType({
   name: 'Query',
   description: 'This is a root query',
-  fields: {
-    articles: () => ({
-      articles: {
-        type: new GraphQLList(articleType),
-        resolve() {
-          return db.Article.find();
-        },
+  fields: () => ({
+    articles: {
+      type: new GraphQLList(articleType),
+      resolve() {
+        return db.Article.find({});
       },
-    }),
-    article: (id) => ({
-      article: {
-        type: new GraphQLObjectType(articleType),
-        resolve() {
-          return db.Article.find({ id });
-        },
+    },
+    article: {
+      type: articleType,
+      args: { id: { type: GraphQLString } },
+      resolve(_, input) {
+        return db.Article.findById(input.id);
       },
-    }),
-  },
+    },
+  }),
 });
 
 const Schema = new GraphQLSchema({
