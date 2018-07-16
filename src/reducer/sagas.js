@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import request from '../tools/request';
-import { ARTICLE_QUERY, DELETE_ARTICLE_QUERY, ARTICLES_QUERY } from '../tools/queries';
+import { ARTICLE_QUERY, DELETE_ARTICLE_QUERY, ARTICLES_QUERY, UPDATE_ARTICLE_QUERY } from '../tools/queries';
 import * as TYPES from '../reducer/constants';
 
 function* fetchArticle(action) {
@@ -26,7 +26,18 @@ function* deleteArticle(action) {
   }
 }
 
+function* updateArticle(action) {
+  try {
+    const query = UPDATE_ARTICLE_QUERY(action.id, action.article);
+    const result = yield call(request, query);
+    yield put({ type: TYPES.UPDATE_ARTICLE_OK, article: result.data.article });
+  } catch (e) {
+    yield put({ type: TYPES.UPDATE_ARTICLE_KO });
+  }
+}
+
 export default function* mySaga() {
   yield takeLatest(TYPES.FETCH_ARTICLE, fetchArticle);
   yield takeLatest(TYPES.DELETE_ARTICLE, deleteArticle);
+  yield takeLatest(TYPES.UPDATE_ARTICLE, updateArticle);
 }

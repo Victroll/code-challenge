@@ -27,3 +27,13 @@ export const DELETE_ARTICLE_QUERY = id => {
       }
     }`;
 };
+
+export const UPDATE_ARTICLE_QUERY = (id, article) => {
+  return `mutation UpdateArticle {
+    updateArticle(id: "${id}", author: "${article.author}",
+      content: "${article.content}",
+      tags: "${article.tags}",
+      title: "${article.title}"
+    )
+  }`;
+};

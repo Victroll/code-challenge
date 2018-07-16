@@ -1,9 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hideArticle, deleteArticle, changeMode } from '../reducer/actions';
+import { hideArticle, deleteArticle, changeMode, updateArticle } from '../reducer/actions';
 import '../styles/enlarged-card.css';
 
 class EnlargedCard extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: props.article.title,
+      content: props.article.content,
+      author: props.article.author,
+      tags: props.article.tags.join('; '),
+    };
+
+    this.renderEditMode = this.renderEditMode.bind(this);
+    this.renderReadMode = this.renderReadMode.bind(this);
+    this.updateField = this.updateField.bind(this);
+    this.updateArticle = this.updateArticle.bind(this);
+  }
+
+  updateField(value, field) {
+    const newState = { ...this.state };
+    newState[field] = value;
+    this.setState(newState);
+  }
+
+  updateArticle() {
+    this.props.updateArticle(this.props.article.id, {
+      author: this.state.author,
+      content: this.state.content,
+      title: this.state.title,
+      tags: this.state.tags.trim().split(";"),
+    });
+  }
+
   renderEditMode(article) {
     return (
       <section 
@@ -11,8 +42,11 @@ class EnlargedCard extends React.Component {
           onClick={(e) => e.stopPropagation()}
         >
         <section className='card-header'>
-          <input type='text' defaultValue={article.title} />
-          <button onClick={() => this.props.saveArticle(article.id)}>
+          <input type='text'
+            defaultValue={article.title}
+            onChange={e => this.updateField(e.target.value, 'title')}
+          />
+          <button onClick={() => this.updateArticle()}>
             <i className="fas fa-save" />
           </button>
           <button onClick={() => this.props.changeMode()}>
@@ -89,6 +123,7 @@ const mapDispatchToProps = dispatch => {
     hide: () => dispatch(hideArticle()),
     deleteArticle: id => dispatch(deleteArticle(id)),
     changeMode: () => dispatch(changeMode()),
+    updateArticle: (id, article) => dispatch(updateArticle(id, article)),
   };
 };
 

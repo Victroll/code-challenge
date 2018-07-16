@@ -32,3 +32,10 @@ export function changeMode() {
     type: TYPES.CHANGE_MODE,
   };
 }
+
+export function updateArticle(id, article) {
+  return {
+    type: TYPES.UPDATE_ARTICLE,
+    article,
+  };
+}
