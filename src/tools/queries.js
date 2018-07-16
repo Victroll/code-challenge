@@ -28,12 +28,22 @@ export const DELETE_ARTICLE_QUERY = id => {
     }`;
 };
 
-export const UPDATE_ARTICLE_QUERY = (id, article) => {
+export const UPDATE_ARTICLE_QUERY = (article) => {
+  const art = Object.keys(article).map(attr => {
+    // Remove carriage return from text
+    if (typeof(article[attr]) === 'string') return `${attr}: "${article[attr].replace(/[\n\r]/g, '')}"`;
+    // Formatting array
+    if (typeof(article[attr]) === 'object') return `${attr}: [${article[attr].map(v => `"${v}"`)}]`;
+    return `${attr}: ${article[attr]}`;
+  }).join(',')
   return `mutation UpdateArticle {
-    updateArticle(id: "${id}", author: "${article.author}",
-      content: "${article.content}",
-      tags: "${article.tags}",
-      title: "${article.title}"
-    )
+    updateArticle(article: {${art}}){
+      author
+      id
+      title
+      content
+      published
+      tags
+    }
   }`;
 };

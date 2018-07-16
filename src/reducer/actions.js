@@ -33,7 +33,7 @@ export function changeMode() {
   };
 }
 
-export function updateArticle(id, article) {
+export function updateArticle(article) {
   return {
     type: TYPES.UPDATE_ARTICLE,
     article,

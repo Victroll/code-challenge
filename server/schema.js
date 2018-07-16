@@ -5,6 +5,7 @@ import {
   GraphQLList,
   GraphQLSchema,
   GraphQLNonNull,
+  GraphQLInputObjectType,
 } from 'graphql';
 import db from './db';
 
@@ -56,12 +57,43 @@ const Query = new GraphQLObjectType({
   }),
 });
 
+const ArticleInputType = new GraphQLInputObjectType({
+  name: 'ArticleInputType',
+  fields: () => ({
+    id: { 
+      type: GraphQLString
+    },
+    author: {
+      type: GraphQLString,
+    },
+    content: {
+      type: GraphQLString,
+    },
+    excerpt: {
+      type: GraphQLString,
+    },
+    id: {
+      type: GraphQLString,
+    },
+    published: {
+      type: GraphQLBoolean,
+    },
+    tags: {
+      type: new GraphQLList(GraphQLString),
+    },
+    title: {
+      type: GraphQLString,
+    },
+  }),
+});
+
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   description: 'Mutation query',
   fields: () => ({
     deleteArticle: {
       type: articleType,
+      description: 'Delete an article by id',
       args: { id: { type: new GraphQLNonNull(GraphQLString) } },
       resolve(_, input) {
         return db.Article.findById(input.id).remove().exec();
@@ -69,31 +101,22 @@ const Mutation = new GraphQLObjectType({
     },
     updateArticle: {
       type: articleType,
+      description: 'Update an article',
       args: {
-        id: { type: new GraphQLNonNull(GraphQLString) },
-        author: {
-          type: GraphQLString,
-        },
-        content: {
-          type: GraphQLString,
-        },
-        tags: {
-          type: new GraphQLList(GraphQLString),
-        },
-        title: {
-          type: GraphQLString,
-        },
+        article: { type: ArticleInputType },
       },
-      resolve(_, input) {
-        db.Article.update(
-          { id: input.id },
+      resolve(_, { article }) {
+        return db.Article.findByIdAndUpdate(
+          article.id,
           { $set: {
-            author: input.author,
-            content: input.content,
-            title: input.title,
+            author: article.author,
+            content: article.content,
+            title: article.title,
+            tags: article.tags,
+            },
           },
-          });
-        return db.Article.findById(input.id);
+          { new: true },
+        );
       },
     },
   }),

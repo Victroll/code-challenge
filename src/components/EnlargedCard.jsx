@@ -27,12 +27,16 @@ class EnlargedCard extends React.Component {
   }
 
   updateArticle() {
-    this.props.updateArticle(this.props.article.id, {
+    const article = {
+      ...this.props.article,
+      id: this.props.article.id,
       author: this.state.author,
       content: this.state.content,
       title: this.state.title,
       tags: this.state.tags.trim().split(";"),
-    });
+    };
+    
+    this.props.updateArticle(article);
   }
 
   renderEditMode(article) {
@@ -53,8 +57,15 @@ class EnlargedCard extends React.Component {
             <i className="fas fa-edit" />
           </button>
         </section>
-        <input type='text' defaultValue={article.author} />
-        <textarea defaultValue={article.content} />
+        <input
+          type='text'
+          defaultValue={article.author}
+          onChange={e => this.updateField(e.target.value, 'author')}
+        />
+        <textarea
+          defaultValue={article.content}
+          onChange={e => this.updateField(e.target.value, 'content')}
+        />
         <br />
         <hr />
         <br />
@@ -63,7 +74,11 @@ class EnlargedCard extends React.Component {
           'Actualmente publicado'
           : 'Pendiente de publicarse'}
         </h3>
-        <input type='text' defaultValue={article.tags.join('; ')} />
+        <input
+          type='text'
+          defaultValue={article.tags.join('; ')}
+          onChange={e => this.updateField(e.target.value, 'tags')}
+        />
       </section>
     );
   }

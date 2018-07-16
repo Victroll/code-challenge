@@ -28,9 +28,12 @@ function* deleteArticle(action) {
 
 function* updateArticle(action) {
   try {
-    const query = UPDATE_ARTICLE_QUERY(action.id, action.article);
+    const query = UPDATE_ARTICLE_QUERY(action.article);
     const result = yield call(request, query);
-    yield put({ type: TYPES.UPDATE_ARTICLE_OK, article: result.data.article });
+    yield put({ type: TYPES.UPDATE_ARTICLE_OK, article: result.data.updateArticle });
+    // Fetch all the articles
+    const articles = yield call(request, ARTICLES_QUERY);
+    yield put({ type: TYPES.SET_ARTICLES, articles: articles.data.articles });
   } catch (e) {
     yield put({ type: TYPES.UPDATE_ARTICLE_KO });
   }
