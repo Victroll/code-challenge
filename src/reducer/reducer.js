@@ -13,6 +13,7 @@ export default function(state, action) {
         enlargedArticle: action.article,
         showArticle: true,
       };
+    case TYPES.DELETE_ARTICLE_OK:
     case TYPES.HIDE_ARTICLE:
       return {
         ...state,

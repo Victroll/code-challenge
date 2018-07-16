@@ -10,7 +10,7 @@ class Body extends React.Component {
     return (
       <section className='body'>
         {this.props.articles.map(
-            (_, i) => <Card id={i} />,
+            (_, i) => <Card key={`card-${i}`} id={i} />,
         )}
         {showArticle && <EnlargedCard article={enlargedArticle} />}
       </section>

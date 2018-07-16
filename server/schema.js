@@ -4,7 +4,7 @@ import {
   GraphQLString,
   GraphQLList,
   GraphQLSchema,
-  GraphQLInputField,
+  GraphQLNonNull,
 } from 'graphql';
 import db from './db';
 
@@ -56,8 +56,23 @@ const Query = new GraphQLObjectType({
   }),
 });
 
+const Mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  description: 'Mutation query',
+  fields: () => ({
+    deleteArticle: {
+      type: articleType,
+      args: { id: { type: new GraphQLNonNull(GraphQLString) } },
+      resolve(_, input) {
+        return db.Article.findById(input.id).remove().exec();
+      },
+    },
+  }),
+});
+
 const Schema = new GraphQLSchema({
   query: Query,
+  mutation: Mutation,
 });
 
 export default Schema;

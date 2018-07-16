@@ -19,3 +19,10 @@ export function hideArticle() {
     type: TYPES.HIDE_ARTICLE,
   };
 }
+
+export function deleteArticle(id) {
+  return {
+    type: TYPES.DELETE_ARTICLE,
+    id,
+  };
+}
