@@ -11,6 +11,7 @@ import mySaga from './reducer/sagas';
 const INIT_STATE = {
   articles: [],
   enlargedArticle: null,
+  editMode: false,
 };
 
 const sagaMiddleware = createSagaMiddleware();

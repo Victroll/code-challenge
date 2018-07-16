@@ -67,6 +67,12 @@ const Mutation = new GraphQLObjectType({
         return db.Article.findById(input.id).remove().exec();
       },
     },
+    // updateArticle: {
+    //   type: articleType,
+    //   args: {
+    //     id: { type: new GraphQLNonNull(GraphQLString) }
+    //   }
+    // }
   }),
 });
 

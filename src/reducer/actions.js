@@ -26,3 +26,9 @@ export function deleteArticle(id) {
     id,
   };
 }
+
+export function changeMode() {
+  return {
+    type: TYPES.CHANGE_MODE,
+  };
+}

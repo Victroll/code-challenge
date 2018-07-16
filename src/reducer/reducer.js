@@ -19,6 +19,12 @@ export default function(state, action) {
         ...state,
         enlargedArticle: null,
         showArticle: false,
+        editMode: false,
+      };
+    case TYPES.CHANGE_MODE:
+      return {
+        ...state,
+        editMode: !state.editMode,
       };
     default:
       return state;

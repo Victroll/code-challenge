@@ -43,3 +43,19 @@
     font-size: 1.5rem;
     min-width: 3rem;
 }
+
+.card.enlarged input {
+    margin: 0.5rem 0;
+}
+
+.card.enlarged textarea {
+    margin: 0.5rem 0;
+    width: 100%;
+    height: 15rem;
+}
+
+.card.enlarged .tags {
+    font-style: italic;
+    margin: 0.5rem 0;
+    color: rgba(0, 0, 0, 0.75);
+}
