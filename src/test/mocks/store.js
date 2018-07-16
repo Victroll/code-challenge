@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import Faker from 'faker';
 import reducer from '../../reducer/reducer';
 
 export const editModeState = {
@@ -37,4 +38,34 @@ export const readModeState = {
 export const readModeStore = createStore(
   reducer,
   readModeState,
+);
+
+function generateContent() {
+  const r = [];
+  for (let i = 0; i < 10; i++) {
+    const content = `${Faker.lorem.paragraphs()}${Faker.lorem.paragraphs()}${Faker.lorem.paragraphs()}`;
+    r.push(
+      {
+        author: Faker.name.findName(),
+        content,
+        excerpt: content.slice(0, 350),
+        published: Faker.random.boolean(),
+        tags: [Faker.random.words(), Faker.random.words()],
+        title: Faker.name.title(),
+      }
+    );
+  }
+
+  return r;
+}
+
+export const bodyState = {
+  articles: generateContent(),
+  enlargedArticle: null,
+  editMode: false
+};
+
+export const bodyStore = createStore(
+  reducer,
+  bodyState,
 );
