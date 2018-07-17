@@ -20,6 +20,7 @@ class NewArticle extends React.Component {
         onMouseLeave={() => this.setState({ ...this.state, animate: ''})}
       >
         <button
+          id='new-article-button'
           className={ this.state.animate }
           onClick={ () => this.props.writeNewArticle() }
         >

@@ -1,0 +1,16 @@
+{
+  "modifiedArticle": {
+    "author": "Author test 1",
+    "title": "Title test 1",
+    "content": "Content test 1",
+    "tags": "tag 1; tag 2",
+    "tagsAdjusted": "tag 1"
+  },
+  "newArticle": {
+    "author": "New author 1",
+    "title": "New title 1",
+    "content": "New content 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacinia nibh et pellentesque tristique. Ut quis elit quis sapien posuere pretium. Fusce rutrum, quam id sodales tincidunt, ligula mi luctus tellus, sit amet lacinia dolor arcu ac massa. Etiam risus urna, ornare id elit quis, fermentum posuere nibh. In ac magna mi. Etiam et rutrum nunc. Nunc vitae rutrum ex, id mollis arcu. Ut rutrum diam quis mattis egestas. Donec pellentesque sem lectus, vitae malesuada neque aliquam at. Morbi enim leo, pretium ac efficitur vitae, aliquam et metus. Nunc dui mi, dictum scelerisque nulla id, varius mollis justo. Quisque ornare, odio vel viverra vulputate, risus erat vulputate tellus, non malesuada nibh libero sed metus. Vestibulum sed libero quis arcu aliquet aliquam at vel est.",
+    "tags": "New tag 1; New tag 2; New tag 3",
+    "tagsAdjusted": "tag 3"
+  }
+}

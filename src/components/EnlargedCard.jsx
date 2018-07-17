@@ -49,23 +49,27 @@ class EnlargedCard extends React.Component {
           onClick={(e) => e.stopPropagation()}
         >
         <section className='card-header'>
-          <input type='text'
+          <input
+            id='title-input'
+            type='text'
             defaultValue={article.title}
             onChange={e => this.updateField(e.target.value, 'title')}
           />
-          <button onClick={() => this.updateArticle()}>
+          <button id='save-button' onClick={() => this.updateArticle()}>
             <i className="fas fa-save" />
           </button>
-          <button onClick={() => this.props.changeMode()}>
+          <button id='edit-button' onClick={() => this.props.changeMode()}>
             <i className="fas fa-edit" />
           </button>
         </section>
         <input
+          id='author-input'
           type='text'
           defaultValue={article.author}
           onChange={e => this.updateField(e.target.value, 'author')}
         />
         <textarea
+          id='content-input'
           defaultValue={article.content}
           onChange={e => this.updateField(e.target.value, 'content')}
         />
@@ -78,6 +82,7 @@ class EnlargedCard extends React.Component {
           : 'Pendiente de publicarse'}
         </h3>
         <input
+          id='tags-input'
           type='text'
           defaultValue={article.tags.join('; ')}
           onChange={e => this.updateField(e.target.value, 'tags')}
@@ -93,16 +98,16 @@ class EnlargedCard extends React.Component {
           onClick={(e) => e.stopPropagation()}
         >
         <section className='card-header'>
-          <h1>{article.title}</h1>
-          <button onClick={() => this.props.deleteArticle(article.id)}>
+          <h1 id='title'>{article.title}</h1>
+          <button id='delete-button' onClick={() => this.props.deleteArticle(article.id)}>
             <i className="fas fa-trash-alt" />
           </button>
-          <button onClick={() => this.props.changeMode()}>
+          <button id='edit-button' onClick={() => this.props.changeMode()}>
             <i className="fas fa-edit" />
           </button>
         </section>
-        <h2>{article.author}</h2>
-        <p>{article.content}</p>
+        <h2 id='author'>{article.author}</h2>
+        <p id='content'>{article.content}</p>
         <br />
         <hr />
         <br />
@@ -111,7 +116,7 @@ class EnlargedCard extends React.Component {
           'Actualmente publicado'
           : 'Pendiente de publicarse'}
         </h3>
-        <p className='tags'>TAGS: {article.tags.join('; ')}</p>
+        <p id='tags' className='tags'>TAGS: {article.tags.join('; ')}</p>
       </section>
     );
   }
