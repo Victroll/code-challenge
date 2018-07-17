@@ -1,7 +1,7 @@
 @media only screen and (min-width: 415px) {
     .new-article {
         position: absolute;
-        top: calc(100% - 15rem);
+        bottom: 0;
         left: calc(100% - 8rem);
     }
 }

@@ -2,9 +2,13 @@
     background-color: #1976d2;
     color: white;
     height: 5rem;
-    padding: 2rem 1rem;
+    padding: 2rem 0rem;
     display: flex;
     justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
 }
 
 .footer .flex-column {
